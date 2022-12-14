@@ -19,5 +19,4 @@ input:not([type="checkbox"]) {
     border-radius: 9px;
     border: 1px solid #8BC546;
     color: #FFF;
-    background-color: transparent;
 }
