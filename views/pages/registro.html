@@ -2,23 +2,23 @@
     <h2 class="text-light text-center">Registro</h2>
     <form class="register-form">
         <div>
-            <label for="register-username">Nombre de usuario <span class="name-error"></span></label>
-            <input type="text" class="bg-dark" id="register-username">
+            <label for="register-username">Nombre de usuario <span class="name-error text-danger"></span></label>
+            <input type="text" class="bg-dark" id="register-username" required>
         </div>
         <div>
-            <label for="register-email">Correo electrónico <span class="email-error"></span></label>
-            <input type="email" class="bg-dark" id="register-email" placeholder="email@ejemplo.com">
+            <label for="register-email">Correo electrónico <span class="email-error text-danger"></span></label>
+            <input type="email" class="bg-dark" id="register-email" placeholder="email@ejemplo.com" required>
         </div>
         <div>
-            <label for="register-password">Contraseña <span class="password-error"></span></label>
-            <input type="password" class="bg-dark" id="register-password">
+            <label for="register-password" id="password-error">Contraseña</label>
+            <input type="password" class="bg-dark" id="register-password" required>
         </div>
         <div>
-            <label for="confirm-password">Confirmar contraseña <span class="repeat-password-error"></span></label>
-            <input type="password" class="bg-dark" id="confirm-password">
+            <label for="register-password-confirm" id="password-confirm-error">Confirmar contraseña</label>
+            <input type="password" class="bg-dark" id="register-password-confirm" required>
         </div>
         <div class="btn-register-container">
-            <button id="register-button" type="button" class="btn-main">Registrarse</button>
+            <button id="register-button" type="submit" class="btn-main">Registrarse</button>
             <span id="span-error-message" class="text-danger ms-2"></span>
         </div>
     </form>
