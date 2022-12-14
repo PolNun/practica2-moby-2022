@@ -3,15 +3,16 @@
         <div class="col-12 col-md-5">
             <div class="card bg-dark login-form-container">
                 <form class="card-body login-form">
-                    <label for="login-input-email">Correo electrónico <span class="email-error"></span></label>
+                    <label for="login-input-email">Correo electrónico</label>
                     <input type="email" class="bg-dark" id="login-input-email" placeholder="email@ejemplo.com">
-                    <label for="login-input-password">Contraseña <span class="password-error"></span></label>
+                    <label for="login-input-password">Contraseña</label>
                     <input type="password" class="bg-dark" id="login-input-password">
                     <div class="pt-2">
-                        <input type="checkbox" name="remember-me" id="input-remember-me">
+                        <input type="checkbox" name="remember-user" id="remember-user">
                         <span class="form-text">Recuérdame</span>
                     </div>
                     <button type="button" class="mt-2 btn-main" id="login-button">Ingresar</button>
+                    <span id="login-error" class="text-danger ms-3"></span>
                 </form>
                 <div class="card-body">
                     <p class="card-text text-light">

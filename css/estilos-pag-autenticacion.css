@@ -5,6 +5,7 @@
     padding: 5px 15px;
     color: white;
     font-weight: 600;
+    align-self: flex-start;
 }
 
 .btn-main:hover {
@@ -39,7 +40,23 @@
 }
 
 .register-form > div {
-    margin: 10px;
+    margin: 10px 0;
+}
+
+.btn-register-container {
+    align-self: flex-start;
+}
+
+.email-error {
+    color: red;
+}
+
+.password-error {
+    color: red;
+}
+
+.input-error {
+    border: 1px solid red;
 }
 
 /* mobile media query */
