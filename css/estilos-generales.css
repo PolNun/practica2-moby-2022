@@ -1,0 +1,23 @@
+body {
+    background-color: #333 !important;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+label {
+    color: #CCC;
+}
+
+input:not([type="checkbox"]) {
+    outline: none;
+    padding: 0.4em;
+    width: 300px;
+    border-radius: 9px;
+    border: 1px solid #8BC546;
+    color: #FFF;
+    background-color: transparent;
+}

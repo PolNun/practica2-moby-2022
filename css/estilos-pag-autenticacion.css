@@ -1,0 +1,54 @@
+.btn-main {
+    background-color: #158B44;
+    border-radius: 9px;
+    border: none;
+    padding: 5px 15px;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-main:hover {
+    background-color: #8BC546;
+}
+
+.link-main {
+    color: #8BC546;
+}
+
+.link-main:hover {
+    color: #158B44;
+}
+
+.login-form-container {
+    width: min-content;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.register-container {
+    margin: 20px auto;
+    border-radius: 9px;
+    width: max-content;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+}
+
+.register-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-form > div {
+    margin: 10px;
+}
+
+/* mobile media query */
+@media screen and (max-width: 768px) {
+    .login-form-container {
+        width: 100%;
+    }
+
+    .login-form > input:not([type="checkbox"]) {
+        width: 100%;
+    }
+}
