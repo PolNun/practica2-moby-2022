@@ -1,7 +1,7 @@
 class Main {
 
     async getHTMLContent(url, method = "GET") {
-        return await fetch(url, {method}).then(response => response.text());
+        return await fetch(url, { method }).then(response => response.text());
     }
 
     getIdFromHash() {
@@ -24,7 +24,7 @@ class Main {
         const moduleUrl = this.getModuleUrlFromId(id);
 
         try {
-            const {default: module} = await import(moduleUrl);
+            const { default: module } = await import(moduleUrl);
             if (typeof module.init !== "function") {
                 console.log(`El módulo ${id} no tiene un método init()`);
                 return;
@@ -54,10 +54,6 @@ class Main {
 
     async start() {
         if (location.hash === "") location.hash = "/login";
-
-        if (localStorage.getItem("userEmail")) {
-            document.getElementById("login-input-email").value = localStorage.getItem("userEmail");
-        }
 
         await this.loadTemplates();
     }

@@ -22,12 +22,15 @@
 
 .login-form-container {
     width: min-content;
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    top: 0;
 }
 
-.register-container {
-    margin: 20px auto;
-    border-radius: 9px;
+.sign-container {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
     width: max-content;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
 }
@@ -36,22 +39,19 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    width: 350px;
 }
 
-.register-form > div {
+.register-form>div {
     margin: 10px 0;
 }
 
-.register-form > div > input {
+.register-form>div>input {
     width: 100%;
 }
 
-.is-invalid {
-    border: 1px solid red;
-}
-
-.input-error {
-    border: 1px solid red;
+.register-form>div>label {
+    margin-bottom: 5px;
 }
 
 /* mobile media query */
@@ -60,7 +60,16 @@
         width: 100%;
     }
 
-    .login-form > input:not([type="checkbox"]) {
+    .login-form>input:not([type="checkbox"]) {
+        width: 100%;
+    }
+
+    .sign-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .register-form {
         width: 100%;
     }
 }

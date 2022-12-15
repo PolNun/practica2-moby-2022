@@ -1,20 +1,24 @@
-<div class="register-container pt-3 pb-3 bg-dark">
+<div class="sign-container pt-3 pb-3 bg-dark">
     <h2 class="text-light text-center">Registro</h2>
     <form class="register-form">
         <div>
-            <label for="register-username">Nombre de usuario <span class="name-error text-danger"></span></label>
+            <label for="register-username">Nombre de usuario</label>
+            <p id="username-error"></p>
             <input type="text" class="bg-dark" id="register-username" required>
         </div>
         <div>
-            <label for="register-email">Correo electrónico <span class="email-error text-danger"></span></label>
+            <label for="register-email">Correo electrónico</label>
+            <p id="email-error"></p>
             <input type="email" class="bg-dark" id="register-email" placeholder="email@ejemplo.com" required>
         </div>
         <div>
-            <label for="register-password" id="password-error">Contraseña</label>
+            <label for="register-password">Contraseña</label>
+            <p id="password-error"></p>
             <input type="password" class="bg-dark" id="register-password" required>
         </div>
         <div>
-            <label for="register-password-confirm" id="password-confirm-error">Confirmar contraseña</label>
+            <label for="register-password-confirm">Confirmar contraseña</label>
+            <p id="password-confirm-error"></p>
             <input type="password" class="bg-dark" id="register-password-confirm" required>
         </div>
         <div class="btn-register-container">

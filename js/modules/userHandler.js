@@ -4,7 +4,7 @@ export default class UserHandler {
     static responseHandler({resultCode}) {
         switch (resultCode) {
             case 0:
-                location.hash = "/home";
+                (location.hash === "#/login") ? location.hash = "/home" : location.hash = "/login";
                 break;
             case 1:
                 this.attachErrorMessage("Mail ya registrado");

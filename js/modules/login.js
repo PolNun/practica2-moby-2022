@@ -11,9 +11,6 @@ export default class Login {
     async login() {
         const mail = document.getElementById("login-input-email").value;
         const password = document.getElementById("login-input-password").value;
-        const remember = document.getElementById("remember-user").checked;
-
-        if (remember) this.rememberUserEmail();
 
         const response = await fetch(`${UserHandler.AUTH_API}/login`, {
             method: "POST",
@@ -27,11 +24,4 @@ export default class Login {
         });
         UserHandler.responseHandler(await response.json());
     }
-
-    rememberUserEmail() {
-        const email = document.getElementById("login-input-email").value;
-        localStorage.setItem("userEmail", email);
-    }
-
-
 }
