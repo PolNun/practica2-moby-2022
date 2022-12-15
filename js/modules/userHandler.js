@@ -1,7 +1,7 @@
 export default class UserHandler {
     static AUTH_API = "https://api-auth-moby.herokuapp.com/api/user";
 
-    static responseHandler({resultCode}) {
+    static responseHandler({ resultCode }) {
         switch (resultCode) {
             case 0:
                 (location.hash === "#/login") ? location.hash = "/home" : location.hash = "/login";
@@ -25,5 +25,10 @@ export default class UserHandler {
 
     static attachErrorMessage(message) {
         document.getElementById("span-error-message").innerHTML = message;
+    }
+
+    static setUserToLocalStorage({ id, name, mail, role }) {
+        if (!id) return;
+        localStorage.setItem("user", JSON.stringify({ id, name, mail, role }));
     }
 }

@@ -1,9 +1,6 @@
 export class Home {
-    constructor() {
-        this.message = 'Hello World!';
-    }
 
-    init() {
+    static init() {
         console.log(this.message);
     }
 }

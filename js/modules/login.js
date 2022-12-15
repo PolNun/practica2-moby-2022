@@ -22,6 +22,10 @@ export default class Login {
                 password
             })
         });
-        UserHandler.responseHandler(await response.json());
+
+        const data = await response.json();
+
+        if (data.user) UserHandler.setUserToLocalStorage(data.user);
+        UserHandler.responseHandler(data);
     }
 }
