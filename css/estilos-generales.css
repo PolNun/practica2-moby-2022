@@ -2,12 +2,6 @@ body {
     background-color: var(--background-color);
 }
 
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
 label {
     color: #CCC;
 }
@@ -41,4 +35,8 @@ section {
     padding: 0.4em;
     cursor: pointer;
     border-radius: 0 9px 9px 0;
+}
+
+.api-element {
+    max-width: 160px;
 }

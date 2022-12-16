@@ -68,6 +68,8 @@ class Main {
 
     logout() {
         localStorage.removeItem("user");
+        document.querySelector("header").innerHTML = "";
+        document.querySelector("footer").innerHTML = "";
         location.hash = "/login";
     }
 

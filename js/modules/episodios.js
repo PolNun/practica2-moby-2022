@@ -8,6 +8,16 @@ export default class EpisodesPage {
                 const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
                 document.getElementById("episodes-mount").append(...cards);
             });
+
+        let page = 2;
+        document.getElementById("load-episodes-button").addEventListener("click", () => {
+            ApiContentHandler.loadMoreData("episode", page)
+                .then(episodes => {
+                    const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
+                    document.getElementById("episodes-mount").append(...cards);
+                });
+            page++;
+        });
     }
 
     static createEpisodeCard({id, name, air_date, episode}) {

@@ -7,6 +7,16 @@ export default class LocationsPage {
                 const cards = locations.map(location => LocationsPage.createLocationCard(location));
                 document.getElementById("locations-mount").append(...cards);
             });
+
+        let page = 2;
+        document.getElementById("load-locations-button").addEventListener("click", () => {
+            ApiContentHandler.loadMoreData("location", page)
+                .then(locations => {
+                    const cards = locations.map(location => LocationsPage.createLocationCard(location));
+                    document.getElementById("locations-mount").append(...cards);
+                });
+            page++;
+        });
     }
 
     static createLocationCard({name, type, dimension}) {

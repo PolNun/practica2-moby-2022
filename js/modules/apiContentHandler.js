@@ -4,11 +4,12 @@ export default class ApiContentHandler {
     static getData(resource) {
         return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}`)
             .then(response => response.json())
-            .then(({results}) => results);
+            .then(data => data.results);
     }
 
-    static getSingleData(resource, id) {
-        return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}/${id}`)
-            .then(response => response.json());
+    static loadMoreData(resource, page) {
+        return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}?page=${page}`)
+            .then(response => response.json())
+            .then(data => data.results.slice(0, 10));
     }
 }
