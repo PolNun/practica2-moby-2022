@@ -15,6 +15,7 @@ export default class LocationsPage {
         card.innerHTML = `
             <div class="card-body">
                 <h5 class="card-title">${name}</h5>
+                <hr>
                 <p class="card-text">Tipo: ${type}</p>
                 <p class="card-text">Dimensión: ${dimension}</p>
             </div>

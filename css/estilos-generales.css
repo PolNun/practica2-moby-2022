@@ -32,3 +32,13 @@ section {
 .main-nav__link {
     color: var(--secondary-color) !important;
 }
+
+.btn-search {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    font-weight: bold;
+    border: none;
+    padding: 0.4em;
+    cursor: pointer;
+    border-radius: 0 9px 9px 0;
+}
