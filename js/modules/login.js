@@ -1,9 +1,9 @@
 import UserHandler from "./userHandler.js";
 
-export default class Login {
+export default class LoginPage {
 
     static async init() {
-        const login = new Login();
+        const login = new LoginPage();
         document.getElementById("login-button")
             .addEventListener("click", () => login.login());
     }

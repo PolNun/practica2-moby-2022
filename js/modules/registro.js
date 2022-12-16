@@ -1,9 +1,9 @@
 import UserHandler from "./userHandler.js";
 
-export default class Registro {
+export default class RegisterPage {
 
     static async init() {
-        const registro = new Registro();
+        const registro = new RegisterPage();
         document.getElementById("register-button")
             .addEventListener("click", () => registro.register());
 

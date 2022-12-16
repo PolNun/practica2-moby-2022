@@ -20,6 +20,14 @@ class Main {
         return `./modules/${id}.js`;
     }
 
+    setActiveLink(id) {
+        const links = document.querySelectorAll('.main-nav__link');
+        links.forEach(link => {
+            link.classList.remove('main-nav__link');
+            if (link.href.includes(id)) link.classList.add('main-nav__link');
+        });
+    }
+
     async initJS(id) {
         const moduleUrl = this.getModuleUrlFromId(id);
 
@@ -45,8 +53,12 @@ class Main {
         } else {
             document.querySelector("main").innerHTML = await this.getHTMLContent(viewUrl);
             document.querySelector(".navbar-mount").innerHTML = await this.getHTMLContent("views/components/navbar.html");
+            document.querySelector("footer").innerHTML = await this.getHTMLContent("views/components/footer.html");
+            document.getElementById("btn-logout").addEventListener("click", () => this.logout());
+
         }
         await this.initJS(id);
+        this.setActiveLink(id);
     }
 
     async loadTemplates() {
@@ -54,9 +66,13 @@ class Main {
         window.addEventListener("hashchange", () => this.loadTemplate());
     }
 
+    logout() {
+        localStorage.removeItem("user");
+        location.hash = "/login";
+    }
+
     async start() {
         if (location.hash === "") location.hash = "/login";
-
         await this.loadTemplates();
     }
 }

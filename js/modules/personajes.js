@@ -1,26 +1,45 @@
 import ApiContentHandler from "./apiContentHandler.js";
 
-export default class Characters {
+export default class CharactersPage {
     static init() {
-        const personajes = new Characters();
-        ApiContentHandler.getCharacters()
+        ApiContentHandler.getData("character")
             .then(characters => {
-                const cards = characters.map(character => personajes.createCharacterCard(character));
-                document.querySelector(".cards-mount").append(...cards);
+                const cards = characters.map(character => CharactersPage.createCharacterCard(character));
+                document.getElementById("characters-mount").append(...cards);
             });
+
+        document.getElementById("search-character-button").addEventListener("click", () => {
+            const name = document.getElementById("search-character-input").value;
+            CharactersPage.searchCharacter(name);
+        });
+
+        document.getElementById("search-character-input").addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                const name = document.getElementById("search-character-input").value;
+                CharactersPage.searchCharacter(name);
+            }
+        });
+
     }
 
-    createCharacterCard({name, image}) {
+    static createCharacterCard({name, image}) {
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.classList.add("card", "bg-dark", "text-white", "border-success");
         card.innerHTML = `
-            <img src="${image}" alt="${name}" class="card-img-top" title="${name}">
+            <img src="${image}" alt="${name}" class="card-img-top" style="width: 220px;" title="${name}">
             <div class="card-body">
-                <h5 class="card-title">${name}</h5>
+                <p class="card-text text-wrap">${name}</p>
             </div>
         `;
+
         return card;
     }
 
-
+    static searchCharacter(name) {
+        ApiContentHandler.getData(`character/?name=${name}`)
+            .then(characters => {
+                const cards = characters.map(character => CharactersPage.createCharacterCard(character));
+                document.getElementById("characters-mount").append(...cards);
+            });
+    }
 }
