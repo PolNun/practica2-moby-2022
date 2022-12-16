@@ -40,7 +40,7 @@ export default class Registro {
         username.addEventListener("blur", () => {
             if (!regexUsername.test(username.value)) {
                 usernameErrorMessage.classList.add("text-danger");
-                usernameErrorMessage.innerHTML = "Nombre de usuario debe tener entre 5 y 15 caracteres";
+                usernameErrorMessage.innerHTML = "El nombre de usuario debe tener entre 5 y 15 caracteres";
             } else {
                 usernameErrorMessage.classList.remove("text-danger");
                 usernameErrorMessage.innerHTML = "";
@@ -51,7 +51,7 @@ export default class Registro {
     validateEmail() {
         const email = document.getElementById("register-email");
         const emailErrorMessage = document.getElementById("email-error");
-        const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const regexEmail = /^[a-zA-Z0-9._-]{3,50}@[a-zA-Z0-9.-]{3,50}\.[a-zA-Z]{2,4}$/;
 
         email.addEventListener("blur", () => {
             if (!regexEmail.test(email.value)) {

@@ -1,7 +1,7 @@
 class Main {
 
     async getHTMLContent(url, method = "GET") {
-        return await fetch(url, { method }).then(response => response.text());
+        return await fetch(url, {method}).then(response => response.text());
     }
 
     getIdFromHash() {
@@ -24,7 +24,7 @@ class Main {
         const moduleUrl = this.getModuleUrlFromId(id);
 
         try {
-            const { default: module } = await import(moduleUrl);
+            const {default: module} = await import(moduleUrl);
             if (typeof module.init !== "function") {
                 console.log(`El módulo ${id} no tiene un método init()`);
                 return;
@@ -39,9 +39,11 @@ class Main {
     async loadTemplate() {
         const id = this.getIdFromHash();
         const viewUrl = this.getViewUrlFromId(id);
-        document.querySelector(".forms-mount").innerHTML = await this.getHTMLContent(viewUrl);
-        if (id !== "login" && id !== "registro") {
-            document.querySelector(".start-image").style.display = "none";
+        if (id === "login" || id === "registro") {
+            document.querySelector("main").innerHTML = await this.getHTMLContent("views/components/forms-mount.html");
+            document.querySelector(".forms-mount").innerHTML = await this.getHTMLContent(viewUrl);
+        } else {
+            document.querySelector("main").innerHTML = await this.getHTMLContent(viewUrl);
             document.querySelector(".navbar-mount").innerHTML = await this.getHTMLContent("views/components/navbar.html");
         }
         await this.initJS(id);

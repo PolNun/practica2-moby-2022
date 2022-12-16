@@ -1,9 +1,9 @@
 body {
-    background-color: #333 !important;
+    background-color: var(--background-color);
 }
 
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -17,6 +17,18 @@ input:not([type="checkbox"]) {
     padding: 0.4em;
     width: 300px;
     border-radius: 9px;
-    border: 1px solid #8BC546;
+    border: 1px solid var(--secondary-color);
     color: #FFF;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0 20px 0;
+}
+
+.main-nav__link {
+    color: var(--secondary-color) !important;
 }

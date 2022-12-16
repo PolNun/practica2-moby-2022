@@ -1,5 +1,11 @@
+:root {
+    --main-color: #158B44;
+    --secondary-color: #8BC546;
+    --background-color: #333;
+}
+
 .btn-main {
-    background-color: #158B44;
+    background-color: var(--main-color);
     border-radius: 9px;
     border: none;
     padding: 5px 15px;
@@ -9,21 +15,26 @@
 }
 
 .btn-main:hover {
-    background-color: #8BC546;
+    background-color: var(--secondary-color);
 }
 
 .link-main {
-    color: #8BC546;
+    color: var(--secondary-color);
 }
 
 .link-main:hover {
-    color: #158B44;
+    color: var(--main-color);
+}
+
+.error-message {
+    font-size: 12px;
 }
 
 .login-form-container {
     width: min-content;
     padding: 20px;
     top: 0;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
 }
 
 .sign-container {

@@ -1,10 +1,10 @@
 export default class UserHandler {
     static AUTH_API = "https://api-auth-moby.herokuapp.com/api/user";
 
-    static responseHandler({ resultCode }) {
+    static responseHandler({resultCode}) {
         switch (resultCode) {
             case 0:
-                (location.hash === "#/login") ? location.hash = "/home" : location.hash = "/login";
+                (location.hash === "#/login") ? location.hash = "/personajes" : location.hash = "/login";
                 break;
             case 1:
                 this.attachErrorMessage("Mail ya registrado");
@@ -27,8 +27,8 @@ export default class UserHandler {
         document.getElementById("span-error-message").innerHTML = message;
     }
 
-    static setUserToLocalStorage({ id, name, mail, role }) {
+    static setUserToLocalStorage({id, name, mail, role}) {
         if (!id) return;
-        localStorage.setItem("user", JSON.stringify({ id, name, mail, role }));
+        localStorage.setItem("user", JSON.stringify({id, name, mail, role}));
     }
 }
