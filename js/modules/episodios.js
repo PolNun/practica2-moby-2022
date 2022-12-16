@@ -9,14 +9,13 @@ export default class EpisodesPage {
                 document.getElementById("episodes-mount").append(...cards);
             });
 
-        let page = 2;
+        document.getElementById("search-episode-button").addEventListener("click", () => {
+            const name = document.getElementById("search-episode-input").value;
+            this.searchEpisode(name);
+        });
+
         document.getElementById("load-episodes-button").addEventListener("click", () => {
-            ApiContentHandler.loadMoreData("episode", page)
-                .then(episodes => {
-                    const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
-                    document.getElementById("episodes-mount").append(...cards);
-                });
-            page++;
+            this.loadEpisodes();
         });
     }
 
@@ -33,5 +32,27 @@ export default class EpisodesPage {
             </div>
         `;
         return card;
+    }
+
+    static searchEpisode(name) {
+        ApiContentHandler.getData(`episode/?name=${name}`)
+            .then(episodes => {
+                const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
+                document.getElementById("episodes-mount").innerHTML = "";
+                document.getElementById("load-elements-div").innerHTML = "";
+                document.getElementById("episodes-mount").append(...cards);
+            });
+    }
+
+    static loadEpisodes() {
+        let page = 2;
+        document.getElementById("load-episodes-button").addEventListener("click", () => {
+            ApiContentHandler.loadMoreData("episode", page)
+                .then(episodes => {
+                    const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
+                    document.getElementById("episodes-mount").append(...cards);
+                });
+            page++;
+        });
     }
 }

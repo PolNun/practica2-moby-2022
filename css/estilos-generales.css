@@ -2,6 +2,13 @@ body {
     background-color: var(--background-color);
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 label {
     color: #CCC;
 }

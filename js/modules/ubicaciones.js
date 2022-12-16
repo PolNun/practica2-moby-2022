@@ -8,14 +8,13 @@ export default class LocationsPage {
                 document.getElementById("locations-mount").append(...cards);
             });
 
-        let page = 2;
+        document.getElementById("search-location-button").addEventListener("click", () => {
+            const name = document.getElementById("search-location-input").value;
+            this.searchLocation(name);
+        });
+
         document.getElementById("load-locations-button").addEventListener("click", () => {
-            ApiContentHandler.loadMoreData("location", page)
-                .then(locations => {
-                    const cards = locations.map(location => LocationsPage.createLocationCard(location));
-                    document.getElementById("locations-mount").append(...cards);
-                });
-            page++;
+            this.loadLocations();
         });
     }
 
@@ -32,5 +31,27 @@ export default class LocationsPage {
         `;
 
         return card;
+    }
+
+    static searchLocation(name) {
+        ApiContentHandler.getData(`location/?name=${name}`)
+            .then(locations => {
+                const cards = locations.map(location => LocationsPage.createLocationCard(location));
+                document.getElementById("locations-mount").innerHTML = "";
+                document.getElementById("load-elements-div").innerHTML = "";
+                document.getElementById("locations-mount").append(...cards);
+            });
+    }
+
+    static loadLocations() {
+        let page = 2;
+        document.getElementById("load-locations-button").addEventListener("click", () => {
+            ApiContentHandler.loadMoreData("location", page)
+                .then(locations => {
+                    const cards = locations.map(location => LocationsPage.createLocationCard(location));
+                    document.getElementById("locations-mount").append(...cards);
+                });
+            page++;
+        });
     }
 }
