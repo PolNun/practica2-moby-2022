@@ -13,17 +13,17 @@ export default class CharactersPage {
             CharactersPage.searchCharacter(name);
         });
 
-        document.getElementById("load-characters-button").addEventListener("click", () => {
-            this.loadCharacters();
+        const charactersMount = document.getElementById("characters-mount");
+        const btnPreviousPage = document.getElementById("btn-previous-page");
+        const btnNextPage = document.getElementById("btn-next-page");
+
+        btnNextPage.addEventListener("click", () => {
+            ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "character", charactersMount, CharactersPage.createCharacterCard);
         });
 
-        // document.getElementById("search-character-input").addEventListener("keyup", (event) => {
-        //     if (event.key === "Enter") {
-        //         const name = document.getElementById("search-character-input").value;
-        //         CharactersPage.searchCharacter(name);
-        //     }
-        // });
-
+        btnPreviousPage.addEventListener("click", () => {
+            ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "character", charactersMount, CharactersPage.createCharacterCard);
+        });
     }
 
     static createCharacterCard({name, image}) {
@@ -42,20 +42,10 @@ export default class CharactersPage {
     static searchCharacter(name) {
         ApiContentHandler.getData(`character/?name=${name}`)
             .then(characters => {
-                const cards = characters.map(character => CharactersPage.createCharacterCard(character));
-                document.getElementById("characters-mount").innerHTML = "";
+                const cards = characters.map(character => this.createCharacterCard(character));
                 document.getElementById("load-elements-div").innerHTML = "";
+                document.getElementById("characters-mount").innerHTML = "";
                 document.getElementById("characters-mount").append(...cards);
             });
-    }
-
-    static loadCharacters() {
-        let page = 2;
-        ApiContentHandler.loadMoreData("character", page)
-            .then(characters => {
-                const cards = characters.map(character => CharactersPage.createCharacterCard(character));
-                document.getElementById("characters-mount").append(...cards);
-            });
-        page++;
     }
 }

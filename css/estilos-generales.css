@@ -7,6 +7,8 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    height: 30px;
+    font-size: 16px;
 }
 
 label {
@@ -34,6 +36,16 @@ section {
     color: var(--secondary-color) !important;
 }
 
+.btn-main {
+    background-color: var(--main-color);
+    border-radius: 9px;
+    border: none;
+    padding: 5px 15px;
+    color: white;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
 .btn-search {
     background-color: var(--secondary-color);
     color: var(--background-color);
@@ -44,6 +56,24 @@ section {
     border-radius: 0 9px 9px 0;
 }
 
+#btn-previous-page {
+    border-radius: 9px 0 0 9px;
+}
+
+#btn-next-page {
+    border-radius: 0 9px 9px 0;
+}
+
+.disabled {
+    background-color: #CCC;
+    cursor: not-allowed;
+}
+
 .api-element {
     max-width: 160px;
+}
+
+.api-element:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
 }
