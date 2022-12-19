@@ -14,8 +14,16 @@ export default class EpisodesPage {
             this.searchEpisode(name);
         });
 
-        document.getElementById("load-episodes-button").addEventListener("click", () => {
-            this.loadEpisodes();
+        const episodesMount = document.getElementById("episodes-mount");
+        const btnPreviousPage = document.getElementById("btn-previous-episodes");
+        const btnNextPage = document.getElementById("btn-next-episodes");
+
+        btnNextPage.addEventListener("click", () => {
+            ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "episode", episodesMount, this.createEpisodeCard);
+        });
+
+        btnPreviousPage.addEventListener("click", () => {
+            ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "episode", episodesMount, this.createEpisodeCard);
         });
     }
 

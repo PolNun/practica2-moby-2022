@@ -14,8 +14,8 @@ export default class CharactersPage {
         });
 
         const charactersMount = document.getElementById("characters-mount");
-        const btnPreviousPage = document.getElementById("btn-previous-page");
-        const btnNextPage = document.getElementById("btn-next-page");
+        const btnPreviousPage = document.getElementById("btn-previous-characters");
+        const btnNextPage = document.getElementById("btn-next-characters");
 
         btnNextPage.addEventListener("click", () => {
             ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "character", charactersMount, CharactersPage.createCharacterCard);

@@ -13,8 +13,12 @@ export default class LocationsPage {
             this.searchLocation(name);
         });
 
-        document.getElementById("load-locations-button").addEventListener("click", () => {
-            this.loadLocations();
+        const locationsMount = document.getElementById("locations-mount");
+        const btnPreviousPage = document.getElementById("btn-previous-locations");
+        const btnNextPage = document.getElementById("btn-next-locations");
+
+        btnNextPage.addEventListener("click", () => {
+            ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "location", locationsMount, this.createLocationCard);
         });
     }
 
