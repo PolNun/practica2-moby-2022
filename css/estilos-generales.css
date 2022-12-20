@@ -2,7 +2,7 @@ body {
     background-color: var(--background-color);
 }
 
-footer {
+#footer-container {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -56,11 +56,11 @@ section {
     border-radius: 0 9px 9px 0;
 }
 
-#btn-previous-page {
+#load-elements-div > button:nth-child(1) {
     border-radius: 9px 0 0 9px;
 }
 
-#btn-next-page {
+#load-elements-div > button:nth-child(2) {
     border-radius: 0 9px 9px 0;
 }
 

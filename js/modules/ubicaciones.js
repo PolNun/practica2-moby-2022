@@ -2,6 +2,10 @@ import ApiContentHandler from "./apiContentHandler.js";
 
 export default class LocationsPage {
     static init() {
+        const locationsMount = document.getElementById("locations-mount");
+        const btnPreviousPage = document.getElementById("btn-previous-locations");
+        const btnNextPage = document.getElementById("btn-next-locations");
+
         ApiContentHandler.getData("location")
             .then(locations => {
                 const cards = locations.map(location => LocationsPage.createLocationCard(location));
@@ -13,12 +17,12 @@ export default class LocationsPage {
             this.searchLocation(name);
         });
 
-        const locationsMount = document.getElementById("locations-mount");
-        const btnPreviousPage = document.getElementById("btn-previous-locations");
-        const btnNextPage = document.getElementById("btn-next-locations");
-
         btnNextPage.addEventListener("click", () => {
             ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "location", locationsMount, this.createLocationCard);
+        });
+
+        btnPreviousPage.addEventListener("click", () => {
+            ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "location", locationsMount, this.createLocationCard);
         });
     }
 
@@ -45,17 +49,5 @@ export default class LocationsPage {
                 document.getElementById("load-elements-div").innerHTML = "";
                 document.getElementById("locations-mount").append(...cards);
             });
-    }
-
-    static loadLocations() {
-        let page = 2;
-        document.getElementById("load-locations-button").addEventListener("click", () => {
-            ApiContentHandler.loadMoreData("location", page)
-                .then(locations => {
-                    const cards = locations.map(location => LocationsPage.createLocationCard(location));
-                    document.getElementById("locations-mount").append(...cards);
-                });
-            page++;
-        });
     }
 }

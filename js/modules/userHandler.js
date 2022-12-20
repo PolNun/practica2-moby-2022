@@ -10,7 +10,7 @@ export default class UserHandler {
                 this.attachErrorMessage("Mail ya registrado");
                 break;
             case 2:
-                this.attachErrorMessage("Revisá los campos");
+                this.attachErrorMessage("Error en la validación");
                 break;
             case 3:
                 this.attachErrorMessage("Usuario no encontrado");

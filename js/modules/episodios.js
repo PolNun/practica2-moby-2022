@@ -1,8 +1,11 @@
 import ApiContentHandler from "./apiContentHandler.js";
 
 export default class EpisodesPage {
-
     static init() {
+        const episodesMount = document.getElementById("episodes-mount");
+        const btnPreviousPage = document.getElementById("btn-previous-episodes");
+        const btnNextPage = document.getElementById("btn-next-episodes");
+
         ApiContentHandler.getData("episode")
             .then(episodes => {
                 const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
@@ -13,10 +16,6 @@ export default class EpisodesPage {
             const name = document.getElementById("search-episode-input").value;
             this.searchEpisode(name);
         });
-
-        const episodesMount = document.getElementById("episodes-mount");
-        const btnPreviousPage = document.getElementById("btn-previous-episodes");
-        const btnNextPage = document.getElementById("btn-next-episodes");
 
         btnNextPage.addEventListener("click", () => {
             ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "episode", episodesMount, this.createEpisodeCard);
@@ -39,6 +38,7 @@ export default class EpisodesPage {
                 <p class="card-text"><strong>Fecha de emisión:</strong>  ${air_date}</p>
             </div>
         `;
+
         return card;
     }
 
@@ -50,17 +50,5 @@ export default class EpisodesPage {
                 document.getElementById("load-elements-div").innerHTML = "";
                 document.getElementById("episodes-mount").append(...cards);
             });
-    }
-
-    static loadEpisodes() {
-        let page = 2;
-        document.getElementById("load-episodes-button").addEventListener("click", () => {
-            ApiContentHandler.loadMoreData("episode", page)
-                .then(episodes => {
-                    const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
-                    document.getElementById("episodes-mount").append(...cards);
-                });
-            page++;
-        });
     }
 }

@@ -7,7 +7,7 @@ export default class ApiContentHandler {
             .then(data => data.results);
     }
 
-    static loadMoreData(resource, page) {
+    static getDataByPage(resource, page) {
         return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}?page=${page}`)
             .then(response => response.json())
             .then(data => data.results);
@@ -17,9 +17,18 @@ export default class ApiContentHandler {
         const previousPage = parseInt(btnPreviousPage.dataset.page);
         const previousPageNumber = previousPage - 1;
         btnNextPage.dataset.page = previousPage.toString();
-        btnPreviousPage.dataset.page = previousPageNumber.toString();
 
-        this.loadMoreData(source, previousPageNumber)
+        if (previousPageNumber === 1 || previousPageNumber === 0) {
+            btnPreviousPage.dataset.page = "1";
+            btnPreviousPage.classList.add("disabled");
+            btnPreviousPage.disabled = true;
+        } else {
+            btnPreviousPage.dataset.page = previousPageNumber.toString();
+            btnPreviousPage.classList.remove("disabled");
+            btnPreviousPage.disabled = false;
+        }
+
+        this.getDataByPage(source, previousPageNumber)
             .then(data => {
                 const cards = data.map(element => createCardFunction(element));
                 mountElement.innerHTML = "";
@@ -30,10 +39,19 @@ export default class ApiContentHandler {
     static nextPage(btnPreviousPage, btnNextPage, source, mountElement, createCardFunction) {
         const nextPage = parseInt(btnNextPage.dataset.page);
         const nextPageNumber = nextPage + 1;
-        btnPreviousPage.dataset.page = nextPage.toString();
         btnNextPage.dataset.page = nextPageNumber.toString();
 
-        this.loadMoreData(source, nextPageNumber)
+        if (nextPageNumber === 1) {
+            btnPreviousPage.dataset.page = "1";
+            btnPreviousPage.classList.add("disabled");
+            btnPreviousPage.disabled = true;
+        } else {
+            btnPreviousPage.dataset.page = nextPage.toString();
+            btnPreviousPage.classList.remove("disabled");
+            btnPreviousPage.disabled = false;
+        }
+
+        this.getDataByPage(source, nextPageNumber)
             .then(data => {
                 const cards = data.map(element => createCardFunction(element));
                 mountElement.innerHTML = "";

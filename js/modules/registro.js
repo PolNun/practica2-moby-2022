@@ -3,17 +3,16 @@ import UserHandler from "./userHandler.js";
 export default class RegisterPage {
 
     static async init() {
-        const registro = new RegisterPage();
         document.getElementById("register-button")
-            .addEventListener("click", () => registro.register());
+            .addEventListener("click", () => this.register());
 
-        registro.validateUsername();
-        registro.validateEmail();
-        registro.validatePassword();
-        registro.validatePasswordConfirm();
+        this.validateUsername();
+        this.validateEmail();
+        this.validatePassword();
+        this.validatePasswordConfirm();
     }
 
-    async register() {
+    static async register() {
         const name = document.getElementById("register-username").value;
         const mail = document.getElementById("register-email").value;
         const password = document.getElementById("register-password").value;
@@ -29,10 +28,12 @@ export default class RegisterPage {
                 password
             })
         });
-        UserHandler.responseHandler(await response.json());
+
+        const data = await response.json();
+        UserHandler.responseHandler(data.header);
     }
 
-    validateUsername() {
+    static validateUsername() {
         const username = document.getElementById("register-username");
         const usernameErrorMessage = document.getElementById("username-error");
         const regexUsername = /^[a-zA-Z0-9._-]{5,15}$/;
@@ -48,7 +49,7 @@ export default class RegisterPage {
         });
     }
 
-    validateEmail() {
+    static validateEmail() {
         const email = document.getElementById("register-email");
         const emailErrorMessage = document.getElementById("email-error");
         const regexEmail = /^[a-zA-Z0-9._-]{3,50}@[a-zA-Z0-9.-]{3,50}\.[a-zA-Z]{2,4}$/;
@@ -64,7 +65,7 @@ export default class RegisterPage {
         });
     }
 
-    validatePassword() {
+    static validatePassword() {
         const password = document.getElementById("register-password");
         const passwordErrorMessage = document.getElementById("password-error");
         const regexPassword = /[a-zA-Z\d]{8,30}$/;
@@ -80,7 +81,7 @@ export default class RegisterPage {
         });
     }
 
-    validatePasswordConfirm() {
+    static validatePasswordConfirm() {
         const password = document.getElementById("register-password");
         const passwordConfirm = document.getElementById("register-password-confirm");
         const passwordErrorMessage = document.getElementById("password-confirm-error");
