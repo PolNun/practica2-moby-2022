@@ -14,7 +14,7 @@ export default class CharactersPage {
 
         document.getElementById("search-character-button").addEventListener("click", () => {
             const name = document.getElementById("search-character-input").value;
-            CharactersPage.searchCharacter(name);
+            CharactersPage.searchCharacterByName(name);
         });
 
         btnNextPage.addEventListener("click", () => {
@@ -39,7 +39,7 @@ export default class CharactersPage {
         return card;
     }
 
-    static searchCharacter(name) {
+    static searchCharacterByName(name) {
         ApiContentHandler.getData(`character/?name=${name}`)
             .then(characters => {
                 const cards = characters.map(character => this.createCharacterCard(character));

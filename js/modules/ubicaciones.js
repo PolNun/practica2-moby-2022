@@ -14,7 +14,7 @@ export default class LocationsPage {
 
         document.getElementById("search-location-button").addEventListener("click", () => {
             const name = document.getElementById("search-location-input").value;
-            this.searchLocation(name);
+            this.searchLocationByName(name);
         });
 
         btnNextPage.addEventListener("click", () => {
@@ -41,7 +41,7 @@ export default class LocationsPage {
         return card;
     }
 
-    static searchLocation(name) {
+    static searchLocationByName(name) {
         ApiContentHandler.getData(`location/?name=${name}`)
             .then(locations => {
                 const cards = locations.map(location => LocationsPage.createLocationCard(location));

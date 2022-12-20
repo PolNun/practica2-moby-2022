@@ -53,7 +53,8 @@ class Main {
         } else {
             document.querySelector("main").innerHTML = await this.getHTMLContent(viewUrl);
             document.querySelector(".navbar-mount").innerHTML = await this.getHTMLContent("views/components/navbar.html");
-            document.querySelector("footer").innerHTML = await this.getHTMLContent("views/components/footer.html");
+            // document.querySelector("footer").innerHTML = await this.getHTMLContent("views/components/footer.html");
+            document.body.insertAdjacentHTML("beforeend", await this.getHTMLContent("views/components/footer.html"));
             document.getElementById("btn-logout").addEventListener("click", () => this.logout());
 
         }

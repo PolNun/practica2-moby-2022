@@ -14,7 +14,7 @@ export default class EpisodesPage {
 
         document.getElementById("search-episode-button").addEventListener("click", () => {
             const name = document.getElementById("search-episode-input").value;
-            this.searchEpisode(name);
+            this.searchEpisodeByName(name);
         });
 
         btnNextPage.addEventListener("click", () => {
@@ -42,7 +42,7 @@ export default class EpisodesPage {
         return card;
     }
 
-    static searchEpisode(name) {
+    static searchEpisodeByName(name) {
         ApiContentHandler.getData(`episode/?name=${name}`)
             .then(episodes => {
                 const cards = episodes.map(episode => EpisodesPage.createEpisodeCard(episode));
