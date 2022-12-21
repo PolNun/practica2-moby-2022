@@ -62,7 +62,9 @@ export default class CharactersPage {
                 const characterName = e.target.title;
                 ApiContentHandler.getData(`character/?name=${characterName}`)
                     .then(character => {
-                        this.charactersMount.style.display = "none";
+                        document.getElementById("load-elements-div").hidden = true;
+                        document.getElementById("search-character").hidden = true;
+                        this.charactersMount.hidden = true;
                         this.createCharacterDetails(character[0]);
                     });
             }
@@ -95,5 +97,15 @@ export default class CharactersPage {
                 </div>
             </div>
         `;
+        this.closeDetailsButton();
+    }
+
+    static closeDetailsButton() {
+        document.getElementById("close-details-button").addEventListener("click", () => {
+            this.charactersMount.hidden = false;
+            this.charactersDetailsContainer.innerHTML = "";
+            document.getElementById("search-character").hidden = false;
+            document.getElementById("load-elements-div").hidden = false;
+        });
     }
 }

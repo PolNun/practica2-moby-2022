@@ -2,6 +2,7 @@ import ApiContentHandler from "./apiContentHandler.js";
 
 export default class LocationsPage {
     static locationsMount = document.getElementById("locations-mount");
+    static locationDetailsContainer = document.getElementById("location-details");
 
     static init() {
         this.locationCardClick();
@@ -26,11 +27,11 @@ export default class LocationsPage {
         });
 
         btnNextPage.addEventListener("click", () => {
-            ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "location", locationsMount, this.createLocationCard);
+            ApiContentHandler.nextPage(btnPreviousPage, btnNextPage, "location", this.locationsMount, this.createLocationCard);
         });
 
         btnPreviousPage.addEventListener("click", () => {
-            ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "location", locationsMount, this.createLocationCard);
+            ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "location", this.locationsMount, this.createLocationCard);
         });
     }
 
@@ -65,7 +66,9 @@ export default class LocationsPage {
                 const locationId = e.target.dataset.id;
                 ApiContentHandler.getDataById("location", locationId)
                     .then(location => {
-                        this.locationsMount.style.display = "none";
+                        document.getElementById("load-elements-div").hidden = true;
+                        document.getElementById("search-location").hidden = true;
+                        this.locationsMount.hidden = true;
                         this.createLocationDetails(location);
                     });
             }
@@ -73,9 +76,9 @@ export default class LocationsPage {
     }
 
     static createLocationDetails({name, type, dimension, residents}) {
-        const locationDetails = document.getElementById("location-details");
-        locationDetails.innerHTML = `
+        this.locationDetailsContainer.innerHTML = `
             <div class="card bg-dark text-white border-success">
+                <button id="close-details-button" class="btn-close btn-close-white ms-auto p-2"></button>
                 <div class="p-3">
                     <h5 class="card-title">${name}</h5>
                     <p class="card-text">Tipo: ${type}</p>
@@ -84,5 +87,15 @@ export default class LocationsPage {
                 </div>
             </div>
         `;
+        this.closeDetailsButton();
+    }
+
+    static closeDetailsButton() {
+        document.getElementById("close-details-button").addEventListener("click", () => {
+            this.locationsMount.hidden = false;
+            this.locationDetailsContainer.innerHTML = "";
+            document.getElementById("search-location").hidden = false;
+            document.getElementById("load-elements-div").hidden = false;
+        });
     }
 }

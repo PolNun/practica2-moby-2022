@@ -2,6 +2,7 @@ import ApiContentHandler from "./apiContentHandler.js";
 
 export default class EpisodesPage {
     static episodesMount = document.getElementById("episodes-mount");
+    static episodeDetailsContainer = document.getElementById("episode-details");
 
     static init() {
         this.episodeCardClick();
@@ -64,7 +65,9 @@ export default class EpisodesPage {
                 const episodeId = event.target.dataset.id;
                 ApiContentHandler.getDataById("episode", episodeId)
                     .then(episode => {
-                        this.episodesMount.style.display = "none";
+                        document.getElementById("search-episode").hidden = true;
+                        document.getElementById("load-elements-div").hidden = true;
+                        this.episodesMount.hidden = true;
                         this.createEpisodeDetails(episode);
                     });
             }
@@ -72,10 +75,9 @@ export default class EpisodesPage {
     }
 
     static createEpisodeDetails({id, name, air_date, episode, characters}) {
-        const episodeDetails = document.getElementById("episode-details");
-
-        episodeDetails.innerHTML = `
+        this.episodeDetailsContainer.innerHTML = `
             <div class="card bg-dark text-white border-success">
+                <button id="close-details-button" class="btn-close btn-close-white m-auto mt-2"></button>
                 <div class="card-body">
                     <h5 class="card-title">Episodio ${id}</h5>
                     <hr>
@@ -89,5 +91,15 @@ export default class EpisodesPage {
                 </div>
             </div>
         `;
+        this.closeDetailsButton();
+    }
+
+    static closeDetailsButton() {
+        document.getElementById("close-details-button").addEventListener("click", () => {
+            this.episodeDetailsContainer.innerHTML = "";
+            this.episodesMount.hidden = false;
+            document.getElementById("search-episode").hidden = false;
+            document.getElementById("load-elements-div").hidden = false;
+        });
     }
 }
