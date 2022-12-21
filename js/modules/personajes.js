@@ -83,9 +83,12 @@ export default class CharactersPage {
                             <img src="${image}" alt="${name}" class="img-fluid rounded" title="${name}">
                         </div>
                         <div class="col-12 col-md-9 mt-2">
-                            <p><strong>Estado:</strong> ${status}</p>
-                            <p><strong>Especie:</strong> ${species}</p>
+                            <p><strong>Estado:</strong> ${(status === "Alive") ? "Vivo" : "Muerto"}</p>
+                            <hr>
+                            <p><strong>Especie:</strong> ${(species)}</p>
+                            <hr>
                             <p><strong>Ubicación:</strong> ${location.name}</p>
+                            <hr>
                             <p><strong>Episodios:</strong> ${episodes.join(", ")}</p>
                     </div>
                 </div>

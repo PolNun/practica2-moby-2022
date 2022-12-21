@@ -83,11 +83,19 @@ export default class EpisodesPage {
                     <p class="card-text"><strong>Episodio:</strong> ${episode}</p>
                     <p class="card-text"><strong>Fecha de emisión:</strong>  ${air_date}</p>
                     <p class="card-text"><strong>Personajes:</strong></p>
-                    <ul class="list-group list-group-flush">
-                        ${characters.map(character => `<li class="list-group-item bg-dark text-white border-success">${character}</li>`).join("")}
+                    <ul id="character-list" class="list-group list-group-flush">
+                    ${characters.map(character => `<li class="list-group list-group-item bg-dark text-white border-success">${character}</li>`).join("")}
                     </ul>
                 </div>
             </div>
         `;
     }
+
+    // static getCharacterName(url) {
+    //     const characterId = url.slice(url.lastIndexOf("/") + 1);
+    //     const charName = ApiContentHandler.getDataById("character", characterId)
+    //         .then(character => {
+    //             character.name;
+    //         });
+    // }
 }

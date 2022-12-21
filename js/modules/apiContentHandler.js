@@ -41,6 +41,10 @@ export default class ApiContentHandler {
             });
     }
 
+    // static getCharacterNameById(id) {
+    //
+    // }
+
     static nextPage(btnPreviousPage, btnNextPage, source, mountElement, createCardFunction) {
         const nextPage = parseInt(btnNextPage.dataset.page);
         const nextPageNumber = nextPage + 1;
