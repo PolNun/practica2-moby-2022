@@ -90,12 +90,4 @@ export default class EpisodesPage {
             </div>
         `;
     }
-
-    // static getCharacterName(url) {
-    //     const characterId = url.slice(url.lastIndexOf("/") + 1);
-    //     const charName = ApiContentHandler.getDataById("character", characterId)
-    //         .then(character => {
-    //             character.name;
-    //         });
-    // }
 }
