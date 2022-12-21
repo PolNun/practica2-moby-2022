@@ -73,23 +73,24 @@ export default class CharactersPage {
         const episodes = episode.map(episode => episode.split("/").pop());
         this.charactersDetailsContainer.innerHTML = `
             <div class="bg-dark text-light rounded border-success">
-                <div class="p-3">
+                <div class="p-4">
                     <div class="d-flex">
-                        <h5 class="mb-3">${name}</h5>
+                        <h5 class="mb-2">${name}</h5>
                         <button id="close-details-button" class="btn-close btn-close-white ms-auto"></button>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col-12 col-md-3">
                             <img src="${image}" alt="${name}" class="img-fluid rounded" title="${name}">
                         </div>
                         <div class="col-12 col-md-9 mt-2">
-                            <p><strong>Estado:</strong> ${(status === "Alive") ? "Vivo" : "Muerto"}</p>
-                            <hr>
-                            <p><strong>Especie:</strong> ${(species)}</p>
-                            <hr>
-                            <p><strong>Ubicación:</strong> ${location.name}</p>
-                            <hr>
-                            <p><strong>Episodios:</strong> ${episodes.join(", ")}</p>
+                            <p><strong class="text-secondary">Estado:</strong> ${(status === "Alive") ? "Vivo" : "Muerto"}</p>
+                            <hr class="text-success">
+                            <p><strong class="text-secondary">Especie:</strong> ${(species)}</p>
+                            <hr class="text-success">
+                            <p><strong class="text-secondary">Ubicación:</strong> ${location.name}</p>
+                            <hr class="text-success">
+                            <p><strong class="text-secondary">Episodios:</strong> ${episodes.join(", ")}</p>
                     </div>
                 </div>
             </div>
