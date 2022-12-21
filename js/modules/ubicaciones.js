@@ -30,7 +30,7 @@ export default class LocationsPage {
         const card = document.createElement("div");
         card.classList.add("card", "bg-dark", "text-white", "border-success", "w-25");
         card.innerHTML = `
-            <div class="card-body">
+            <div class="card-body location-card">
                 <h5 class="card-title">${name}</h5>
                 <hr>
                 <p class="card-text">Tipo: ${type}</p>

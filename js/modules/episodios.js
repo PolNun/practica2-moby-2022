@@ -30,7 +30,7 @@ export default class EpisodesPage {
         const card = document.createElement("div");
         card.classList.add("card", "bg-dark", "text-white", "border-success", "w-25");
         card.innerHTML = `
-            <div class="card-body">
+            <div class="card-body episode-card">
                 <h5 class="card-title text-success">Episodio ${id}</h5>
                 <hr>
                 <p class="card-text"><strong>Nombre:</strong> ${name}</p>

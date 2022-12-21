@@ -69,11 +69,10 @@ section {
     cursor: not-allowed;
 }
 
-.api-element {
+.character-card {
     max-width: 160px;
 }
 
-.api-element:hover {
+.character-card:hover {
     color: var(--secondary-color);
-    cursor: pointer;
 }
