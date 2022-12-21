@@ -33,7 +33,7 @@ export default class CharactersPage {
         });
     }
 
-    static createCharacterCard({name, image}) {
+    static createCharacterCard({ name, image }) {
         const card = document.createElement("div");
         card.classList.add("card", "bg-dark", "text-white", "border-success");
         card.innerHTML = `
@@ -71,7 +71,7 @@ export default class CharactersPage {
         });
     }
 
-    static createCharacterDetails({name, status, species, episode, image, location}) {
+    static createCharacterDetails({ name, status, species, episode, image, location }) {
         const episodes = episode.map(episode => episode.split("/").pop());
         this.charactersDetailsContainer.innerHTML = `
             <div class="bg-dark text-light rounded border-success">

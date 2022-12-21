@@ -35,7 +35,7 @@ export default class LocationsPage {
         });
     }
 
-    static createLocationCard({id, name, type, dimension}) {
+    static createLocationCard({ id, name, type, dimension }) {
         const card = document.createElement("div");
         card.classList.add("card", "bg-dark", "text-white", "border-success", "w-25");
         card.innerHTML = `
@@ -75,7 +75,7 @@ export default class LocationsPage {
         });
     }
 
-    static createLocationDetails({name, type, dimension, residents}) {
+    static createLocationDetails({ name, type, dimension, residents }) {
         this.locationDetailsContainer.innerHTML = `
             <div class="card bg-dark text-white border-success">
                 <button id="close-details-button" class="btn-close btn-close-white ms-auto p-2"></button>

@@ -1,7 +1,7 @@
 class Main {
 
     async getHTMLContent(url, method = "GET") {
-        return await fetch(url, {method}).then(response => response.text());
+        return await fetch(url, { method }).then(response => response.text());
     }
 
     getIdFromHash() {
@@ -32,7 +32,7 @@ class Main {
         const moduleUrl = this.getModuleUrlFromId(id);
 
         try {
-            const {default: module} = await import(moduleUrl);
+            const { default: module } = await import(moduleUrl);
             if (typeof module.init !== "function") {
                 console.log(`El módulo ${id} no tiene un método init()`);
                 return;
@@ -53,7 +53,6 @@ class Main {
         } else {
             document.querySelector("main").innerHTML = await this.getHTMLContent(viewUrl);
             document.querySelector(".navbar-mount").innerHTML = await this.getHTMLContent("views/components/navbar.html");
-            // document.querySelector("footer").innerHTML = await this.getHTMLContent("views/components/footer.html");
             document.body.insertAdjacentHTML("beforeend", await this.getHTMLContent("views/components/footer.html"));
             document.getElementById("btn-logout").addEventListener("click", () => this.logout());
 

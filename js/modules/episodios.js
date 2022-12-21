@@ -33,7 +33,7 @@ export default class EpisodesPage {
         });
     }
 
-    static createEpisodeCard({id, name, air_date, episode}) {
+    static createEpisodeCard({ id, name, air_date, episode }) {
         const card = document.createElement("div");
         card.classList.add("card", "bg-dark", "text-white", "border-success", "w-25");
         card.innerHTML = `
@@ -74,7 +74,7 @@ export default class EpisodesPage {
         });
     }
 
-    static createEpisodeDetails({id, name, air_date, episode, characters}) {
+    static createEpisodeDetails({ id, name, air_date, episode, characters }) {
         this.episodeDetailsContainer.innerHTML = `
             <div class="card bg-dark text-white border-success">
                 <button id="close-details-button" class="btn-close btn-close-white m-auto mt-2"></button>
