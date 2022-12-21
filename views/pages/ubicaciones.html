@@ -1,19 +1,18 @@
 <div class="container pt-4 m-auto">
-    <div class="col-12">
-        <div class="col-6 ms-auto me-auto">
-            <div class="input-group mb-3">
-                <input id="search-location-input" type="text" class="form-control bg-dark text-light"
-                       placeholder="Buscar una ubicación">
-                <div class="input-group-append">
-                    <button class="btn-search ms-2 p-2" type="button" id="search-location-button">Buscar</button>
-                </div>
+    <div class="col-6 ms-auto me-auto">
+        <div class="input-group mb-3">
+            <input id="search-location-input" type="text" class="form-control bg-dark text-light"
+                   placeholder="Buscar una ubicación">
+            <div class="input-group-append">
+                <button class="btn-search ms-2 p-2" type="button" id="search-location-button">Buscar</button>
             </div>
         </div>
-        <section id="locations-mount">
-        </section>
-        <div id="load-elements-div" class="col-12 text-center">
-            <button id="btn-previous-locations" class="btn-main mb-4 disabled" data-page="1" disabled="true">Anterior</button>
-            <button id="btn-next-locations" class="btn-main mb-4" data-page="1">Siguiente</button>
-        </div>
+    </div>
+    <section id="locations-mount"></section>
+    <section id="location-details"></section>
+    <div id="load-elements-div" class="col-12 text-center">
+        <button id="btn-previous-locations" class="btn-main mb-4 disabled" data-page="1" disabled="true">Anterior
+        </button>
+        <button id="btn-next-locations" class="btn-main mb-4" data-page="1">Siguiente</button>
     </div>
 </div>

@@ -1,22 +1,18 @@
-<div class="container pt-4 m-auto vh-100">
-    <div class="col-12">
-        <div class="col-6 ms-auto me-auto">
-            <div class="input-group mb-3">
-                <input id="search-character-input" type="text" class="form-control bg-dark text-light"
-                       placeholder="Buscar un personaje">
-                <div class="input-group-append">
-                    <button class="btn-search ms-2 p-2" type="button" id="search-character-button">Buscar</button>
-                </div>
+<div class="container pt-4 m-auto">
+    <div class="col-6 ms-auto me-auto">
+        <div class="input-group mb-3">
+            <input id="search-character-input" type="text" class="form-control bg-dark text-light"
+                   placeholder="Buscar un personaje">
+            <div class="input-group-append">
+                <button class="btn-search ms-2 p-2" type="button" id="search-character-button">Buscar</button>
             </div>
         </div>
-        <section id="characters-mount">
-        </section>
-        <section id="character-details"></section>
-        <div id="load-elements-div" class="col-12 text-center">
-            <button id="btn-previous-characters" class="btn-main mb-4 disabled" data-page="1" disabled="true"
-                    data-purpose="previous">Anterior
-            </button>
-            <button id="btn-next-characters" class="btn-main mb-4" data-page="1" data-purpose="next">Siguiente</button>
-        </div>
+    </div>
+    <section id="characters-mount"></section>
+    <section id="character-details"></section>
+    <div id="load-elements-div" class="col-12 text-center">
+        <button id="btn-previous-characters" class="btn-main mb-4 disabled" data-page="1" disabled="true">Anterior
+        </button>
+        <button id="btn-next-characters" class="btn-main mb-4" data-page="1" data-purpose="next">Siguiente</button>
     </div>
 </div>

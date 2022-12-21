@@ -7,6 +7,11 @@ export default class ApiContentHandler {
             .then(data => data.results);
     }
 
+    static getDataById(resource, id) {
+        return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}/${id}`)
+            .then(response => response.json());
+    }
+
     static getDataByPage(resource, page) {
         return fetch(`${ApiContentHandler.API_RICK_AND_MORTY}/${resource}?page=${page}`)
             .then(response => response.json())

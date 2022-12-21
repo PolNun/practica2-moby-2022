@@ -6,17 +6,16 @@ export default class CharactersPage {
 
     static init() {
         this.characterCardClick();
-        this.eventListeners();
+        this.initCharPageEventListeners();
 
         ApiContentHandler.getData("character")
             .then(characters => {
                 const cards = characters.map(character => CharactersPage.createCharacterCard(character));
                 document.getElementById("characters-mount").append(...cards);
             });
-
     }
 
-    static eventListeners() {
+    static initCharPageEventListeners() {
         const btnPreviousPage = document.getElementById("btn-previous-characters");
         const btnNextPage = document.getElementById("btn-next-characters");
 
@@ -32,14 +31,6 @@ export default class CharactersPage {
         btnPreviousPage.addEventListener("click", () => {
             ApiContentHandler.previousPage(btnNextPage, btnPreviousPage, "character", this.charactersMount, CharactersPage.createCharacterCard);
         });
-
-        const closeDetailsButton = document.getElementById("close-details-button");
-        if (closeDetailsButton) {
-            closeDetailsButton.addEventListener("click", () => {
-                this.charactersMount.style.display = "block";
-                this.charactersDetailsContainer.innerHTML = "";
-            });
-        }
     }
 
     static createCharacterCard({name, image}) {
@@ -72,32 +63,33 @@ export default class CharactersPage {
                 ApiContentHandler.getData(`character/?name=${characterName}`)
                     .then(character => {
                         this.charactersMount.style.display = "none";
-                        const characterData = character[0];
-                        const {name, status, species, episode, image, location} = characterData;
-                        const episodes = episode.map(episode => episode.split("/").pop());
-                        this.charactersDetailsContainer.innerHTML = `
-                            <div class="bg-dark text-light rounded border-success">
-                                <div class="p-3">
-                                    <div class="d-flex">
-                                        <h5 class="mb-3">${name}</h5>
-                                        <button id="close-details-button" class="btn-close btn-close-white ms-auto"></button>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-md-3">
-                                            <img src="${image}" alt="${name}" class="img-fluid rounded" title="${name}">
-                                        </div>
-                                        <div class="col-12 col-md-9 mt-2">
-                                            <p><strong>Estado:</strong> ${status}</p>
-                                            <p><strong>Especie:</strong> ${species}</p>
-                                            <p><strong>Ubicación:</strong> ${location.name}</p>
-                                            <p><strong>Episodios:</strong> ${episodes.join(", ")}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-
+                        this.createCharacterDetails(character[0]);
                     });
             }
         });
+    }
+
+    static createCharacterDetails({name, status, species, episode, image, location}) {
+        const episodes = episode.map(episode => episode.split("/").pop());
+        this.charactersDetailsContainer.innerHTML = `
+            <div class="bg-dark text-light rounded border-success">
+                <div class="p-3">
+                    <div class="d-flex">
+                        <h5 class="mb-3">${name}</h5>
+                        <button id="close-details-button" class="btn-close btn-close-white ms-auto"></button>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <img src="${image}" alt="${name}" class="img-fluid rounded" title="${name}">
+                        </div>
+                        <div class="col-12 col-md-9 mt-2">
+                            <p><strong>Estado:</strong> ${status}</p>
+                            <p><strong>Especie:</strong> ${species}</p>
+                            <p><strong>Ubicación:</strong> ${location.name}</p>
+                            <p><strong>Episodios:</strong> ${episodes.join(", ")}</p>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
